@@ -225,3 +225,10 @@ hr {
 	text-decoration: none;
 	color: #939393;
 }
+
+code {
+	font-family: Monaco, mono;
+	color: #ccc;
+	padding-left: 6px;
+	white-space: pre;
+}

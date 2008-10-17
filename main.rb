@@ -1,25 +1,28 @@
 require 'rubygems'
 require 'sinatra'
 require 'sequel'
+require 'rdiscount'
 
-DB = Sequel.sqlite
-DB.create_table :posts do
-	column :title, :text
-	column :body, :text
-	column :slug, :text
-	column :created_at, :timestamp
+DB = Sequel.connect('sqlite://blog.db')
+
+begin
+	DB.create_table :posts do
+		column :title, :text
+		column :body, :text
+		column :slug, :text
+		column :created_at, :timestamp
+	end
+rescue
 end
 
-DB[:posts] << { :title => "Erlang", :body => "Lorum ipsum", :created_at => Time.now, :slug => "1-erlang" }
-DB[:posts] << { :title => "DDL Transactions", :body => "Lorum ipsum 2", :created_at => Time.now, :slug => "2-ddl-transactions" }
-
 get '/' do
-	erb :index, :locals => { :posts => DB[:posts] }
+	erb :index, :locals => { :posts => DB[:posts].reverse_order(:created_at).limit(10) }
 end
 
 get '/*:slug' do
 	post = DB[:posts].filter(:slug => params[:slug]).first
 	stop [ 404, "Page not found" ] unless post
+	post[:body] = RDiscount.new(post[:body]).to_html
 	erb :post, :locals => { :post => post }
 end
 
