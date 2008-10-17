@@ -1,0 +1,168 @@
+body {
+	margin: 0px;
+	padding: 20px;
+	margin-left: 50px;
+	background: #0D0D0D;
+	text-align: justify;
+	font: 14px "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: #FFFFDC;
+}
+
+h1, h2, h3 {
+	font: 1.82em;
+	font-weight: normal;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #FFFFFF;
+}
+
+p, ol, ul {
+	line-height: 1.67em;
+}
+
+a {
+	color: #828170;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+hr {
+	display: none;
+}
+
+/* Logo */
+
+#logo {
+}
+
+#logo h1 {
+	margin: 0;
+	height: 160px;
+	padding: 40px 0 0 0px;
+	text-transform: lowercase;
+	letter-spacing: -2px;
+	font-size: 4em;
+	font-weight: normal;
+	color: #FFFFFF;
+}
+
+#logo h1 a {
+	display: block;
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+#logo p {
+	margin: -103px 0 0 2px;
+	text-transform: uppercase;
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+#logo a {
+	display: block;
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+/* Page */
+
+#page {
+	margin: 0px auto;
+	padding: 20px 0 0 0;
+}
+
+/* Content */
+
+#content {
+	float: left;
+	width: 50em;
+	margin-bottom: 10px;
+}
+
+/* Post */
+
+.post {
+	margin-top: 20px;
+}
+
+.post .date {
+	float: left;
+	width: 29px;
+	height: 32px;
+	margin: 0;
+	margin-top: 3px;
+	margin-right: 20px;
+	padding-top: 2px;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 10px;
+	font-weight: bold;
+	color: #999999;
+}
+
+.post .date b {
+	margin: 0;
+	padding: 0;
+	display: block;
+	margin-top: -5px;
+	font-size: 14px;
+	color: #5C5C5C;
+	
+}
+
+.post .title {
+	margin: 0;
+	padding: 0px 0 0 0;
+	margin-left: 10px;
+	padding-left: 10px;
+	font-size: 1.4em;
+}
+
+.post .meta {
+	margin: 0 0 10px 20px;
+	padding: 0;
+	line-height:normal;
+	text-transform: uppercase;
+	color: #979680;
+}
+
+.post .meta a {
+	color: #828170;
+}
+
+.post .entry {
+	margin: 0;
+	padding: 0 0 20px 50px;
+}
+
+/* Footer */
+
+#footer {
+	margin: 0 auto;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	color: #FFFFFF;
+}
+
+#footer a {
+	text-decoration: none;
+	font-size: 10px;
+	color: #FFFFFF;
+}
+
+#legal {
+	clear: both;
+	margin: 0;
+	padding: 10px 0;
+	font-size: 10px;
+	color: #525252;
+}
+
+#legal a {
+	border-bottom: 1px dotted #939393;
+	text-decoration: none;
+	color: #939393;
+}
