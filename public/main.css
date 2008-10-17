@@ -33,9 +33,6 @@ hr {
 
 /* Logo */
 
-#logo {
-}
-
 #logo h1 {
 	margin: 0;
 	height: 160px;
@@ -61,6 +58,36 @@ hr {
 }
 
 #logo a {
+	display: block;
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+#logo2 h1 {
+	margin: 0;
+	height: 130px;
+	padding: 40px 0 0 0px;
+	text-transform: lowercase;
+	letter-spacing: -2px;
+	font-size: 2em;
+	font-weight: normal;
+	color: #FFFFFF;
+}
+
+#logo2 h1 a {
+	display: block;
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+#logo2 p {
+	margin: -103px 0 0 2px;
+	text-transform: uppercase;
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+#logo2 a {
 	display: block;
 	text-decoration: none;
 	color: #FFFFFF;
@@ -120,6 +147,11 @@ hr {
 	font-size: 1.4em;
 }
 
+.post .title a {
+	color: white;
+	text-decoration: none;
+}
+
 .post .meta {
 	margin: 0 0 10px 20px;
 	padding: 0;
@@ -135,6 +167,33 @@ hr {
 .post .entry {
 	margin: 0;
 	padding: 0 0 20px 50px;
+}
+
+/* Post */
+
+.postzoom {
+	margin-top: 20px;
+}
+
+.postzoom .title {
+	margin: 0;
+	padding: 0px 0 0 0;
+	font-size: 3em;
+}
+
+.postzoom .meta {
+	margin: 0;
+	padding: 0;
+	line-height: normal;
+	text-transform: uppercase;
+	color: #979680;
+}
+
+.postzoom .entry {
+	margin: 0;
+	padding: 0;
+	padding-top: 10px;
+	padding-bottom: 20px;
 }
 
 /* Footer */

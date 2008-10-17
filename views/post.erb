@@ -1,12 +1,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<title>a tornado of razorblades</title>
+	<title><%= post[:title] %></title>
 	<link href="main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="header">
-	<div id="logo">
+	<div id="logo2">
 		<h1><a href="/">a tornado of razorblades</a></h1>
 		<p>by adam @ heroku</p>
 	</div>
@@ -14,16 +14,14 @@
 
 <div id="page">
 	<div id="content">
-		<% posts.each do |post| %>
-		<div class="post">
-			<p class="date"><%= post[:created_at].strftime("%b") %><b><%= post[:created_at].strftime("%d") %></b></p>
-			<h2 class="title"><a href="<%= post[:slug] %>"><%= post[:title] %></a></h2>
-			<p class="meta"><small>erlang ruby methodology | <a href="#">No Comments &raquo;</a></small></p>
+		<div class="postzoom">
+			<h2 class="title"><%= post[:title] %></h2>
+			<p class="meta"><small>erlang ruby methodology</small></p>
+			<p class="meta"><%= post[:created_at] %></p>
 			<div class="entry">
 				<%= post[:body] %>
 			</div>
 		</div>
-		<% end %>
 	</div>
 </div>
 
