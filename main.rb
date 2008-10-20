@@ -15,8 +15,29 @@ begin
 rescue
 end
 
+helpers do
+	def split_content(string)
+		parts = string.gsub(/\r/, '').split("\n\n")
+		show = []
+		hide = []
+		parts.each do |part|
+			if show.join.length < 100
+				show << part
+			else
+				hide << part
+			end
+		end
+		[ RDiscount.new(show.join("\n\n")).to_html, hide.size > 0 ]
+	end
+end
+
 get '/' do
-	erb :index, :locals => { :posts => DB[:posts].reverse_order(:created_at).limit(10) }
+	posts = DB[:posts].reverse_order(:created_at).limit(10)
+	posts = posts.map do |post|
+		post[:body], post[:more?] = split_content(post[:body])
+		post
+	end
+	erb :index, :locals => { :posts => posts }
 end
 
 get '/*:slug' do
