@@ -10,6 +10,7 @@ begin
 		column :title, :text
 		column :body, :text
 		column :slug, :text
+		column :tags, :text
 		column :created_at, :timestamp
 	end
 rescue

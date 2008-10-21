@@ -19,7 +19,7 @@
 		<div class="post">
 			<p class="date"><%= post[:created_at].strftime("%b") %><b><%= post[:created_at].strftime("%d") %></b></p>
 			<h2 class="title"><a href="<%= post[:slug] %>"><%= post[:title] %></a></h2>
-			<p class="meta"><small>erlang ruby methodology | <a href="#">No Comments &raquo;</a></small></p>
+			<p class="meta"><small><%= post[:tags] %> | <a href="#">No Comments &raquo;</a></small></p>
 			<div class="entry">
 				<%= post[:body] %>
 				<% if post[:more?] %>
