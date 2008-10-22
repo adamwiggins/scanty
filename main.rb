@@ -30,16 +30,8 @@ get '/' do
 end
 
 get '/feed' do
-	posts = DB[:posts].reverse_order(:created_at).limit(10)
-	@posts = posts.map do |post|
-		post[:summary], post[:more?] = split_content(post[:body])
-		post[:body] = RDiscount.new(post[:body]).to_html
-		d = post[:created_at]
-		post[:url] = "/past/#{d.year}/#{d.month}/#{d.day}/#{post[:slug]}/"
-		post
-	end
+	@posts = Post.reverse_order(:created_at).limit(10)
 	content_type 'application/atom+xml', :charset => 'utf-8'
-
 	builder :feed
 end
 

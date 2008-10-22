@@ -24,6 +24,10 @@ class Post < Sequel::Model
 		summary
 	end
 
+	def summary_html
+		RDiscount.new(summary).to_html
+	end
+
 	def more?
 		summary, more = split_content(body)
 		more

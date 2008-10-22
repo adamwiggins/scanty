@@ -8,13 +8,13 @@ xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
 	@posts.each do |post|
 		xml.entry do
 			xml.title post[:title]
-#			xml.link "rel" => "alternate", "href" => h(post[:slug])
-			xml.id post[:slug]
+			xml.link "rel" => "alternate", "href" => post.url
+			xml.id post.url
 			xml.published post[:created_at].iso8601
 			xml.updated post[:created_at].iso8601
 			xml.author { xml.name "Adam Wiggins" }
-			xml.summary post[:summary], "type" => "html"
-			xml.content post[:body], "type" => "html"
+			xml.summary post.summary_html, "type" => "html"
+			xml.content post.body_html, "type" => "html"
 		end
 	end
 end
