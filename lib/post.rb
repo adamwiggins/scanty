@@ -1,3 +1,14 @@
+begin
+	DB.create_table :posts do
+		column :title, :text
+		column :body, :text
+		column :slug, :text
+		column :tags, :text
+		column :created_at, :timestamp
+	end
+rescue
+end
+
 class Post < Sequel::Model
 	def url
 		d = created_at

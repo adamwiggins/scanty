@@ -1,23 +1,12 @@
 require 'rubygems'
 require 'sinatra'
 require 'sequel'
-require 'sequel_model'
 require 'rdiscount'
 
 DB = Sequel.connect('sqlite://blog.db')
 
-begin
-	DB.create_table :posts do
-		column :title, :text
-		column :body, :text
-		column :slug, :text
-		column :tags, :text
-		column :created_at, :timestamp
-	end
-rescue
-end
-
-require File.dirname(__FILE__) + '/lib/post'
+$LOAD_PATH.unshift(File.dirname(__FILE__) + '/lib')
+require 'post'
 
 helpers do
 	def split_content(string)
