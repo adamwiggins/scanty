@@ -53,9 +53,19 @@ get '/feed' do
 	builder :feed
 end
 
+get '/past/tags/:tag' do
+	posts = DB[:posts].filter(:tags.like("%#{params[:tag]}%")).reverse_order(:created_at).limit(30)
+	posts = posts.map do |post|
+		post[:body], post[:more?] = split_content(post[:body])
+		post
+	end
+	erb :index, :locals => { :posts => posts }
+end
+
 get '/*:slug' do
 	post = DB[:posts].filter(:slug => params[:slug]).first
 	stop [ 404, "Page not found" ] unless post
 	post[:body] = RDiscount.new(post[:body]).to_html
 	erb :post, :locals => { :post => post }
 end
+
