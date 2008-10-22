@@ -74,7 +74,6 @@ end
 get '/past/:year/:month/:day/:slug/' do
 	post = Post.filter(:slug => params[:slug]).first
 	stop [ 404, "Page not found" ] unless post
-	post[:body] = RDiscount.new(post[:body]).to_html
 	erb :post, :locals => { :post => post }
 end
 

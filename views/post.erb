@@ -15,11 +15,11 @@
 <div id="page">
 	<div id="content">
 		<div class="postzoom">
-			<h2 class="title"><%= post[:title] %></h2>
-			<p class="meta"><small><%= post[:tags] %></small></p>
-			<p class="meta"><%= post[:created_at] %></p>
+			<h2 class="title"><%= post.title %></h2>
+			<p class="meta"><small><%= post.tags %></small></p>
+			<p class="meta"><%= post.created_at %></p>
 			<div class="entry">
-				<%= post[:body] %>
+				<%= post.body_html %>
 			</div>
 		</div>
 	</div>
