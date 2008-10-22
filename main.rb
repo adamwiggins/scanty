@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'sequel'
+require 'sequel_model'
 require 'rdiscount'
 
 DB = Sequel.connect('sqlite://blog.db')
@@ -15,6 +16,8 @@ begin
 	end
 rescue
 end
+
+require File.dirname(__FILE__) + '/lib/post'
 
 helpers do
 	def split_content(string)
@@ -69,7 +72,7 @@ get '/past/tags/:tag' do
 end
 
 get '/past/:year/:month/:day/:slug/' do
-	post = DB[:posts].filter(:slug => params[:slug]).first
+	post = Post.filter(:slug => params[:slug]).first
 	stop [ 404, "Page not found" ] unless post
 	post[:body] = RDiscount.new(post[:body]).to_html
 	erb :post, :locals => { :post => post }
