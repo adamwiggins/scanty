@@ -15,4 +15,9 @@ describe Post do
 		@post.body = "* Bullet"
 		@post.body_html.should == "<ul>\n<li>Bullet</li>\n</ul>\n\n"
 	end
+
+	it "makes the tags into links to the tag search" do
+		@post.tags = "one two"
+		@post.linked_tags.should == '<a href="/past/tags/one">one</a> <a href="/past/tags/two">two</a>'
+	end
 end
