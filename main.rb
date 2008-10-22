@@ -13,10 +13,10 @@ get '/' do
 	erb :index, :locals => { :posts => posts }
 end
 
-get '/feed' do
-	@posts = Post.reverse_order(:created_at).limit(10)
-	content_type 'application/atom+xml', :charset => 'utf-8'
-	builder :feed
+get '/past/:year/:month/:day/:slug/' do
+	post = Post.filter(:slug => params[:slug]).first
+	stop [ 404, "Page not found" ] unless post
+	erb :post, :locals => { :post => post }
 end
 
 get '/past/tags/:tag' do
@@ -24,9 +24,9 @@ get '/past/tags/:tag' do
 	erb :index, :locals => { :posts => posts }
 end
 
-get '/past/:year/:month/:day/:slug/' do
-	post = Post.filter(:slug => params[:slug]).first
-	stop [ 404, "Page not found" ] unless post
-	erb :post, :locals => { :post => post }
+get '/feed' do
+	@posts = Post.reverse_order(:created_at).limit(10)
+	content_type 'application/atom+xml', :charset => 'utf-8'
+	builder :feed
 end
 
