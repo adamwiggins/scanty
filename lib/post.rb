@@ -9,6 +9,8 @@ begin
 rescue
 end
 
+require 'rdiscount'
+
 class Post < Sequel::Model
 	def url
 		d = created_at

@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'spec'
 require 'sequel'
-require 'rdiscount'
 
 DB = Sequel.sqlite
 

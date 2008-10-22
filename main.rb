@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'sinatra'
 require 'sequel'
-require 'rdiscount'
 
 DB = Sequel.connect('sqlite://blog.db')
 
