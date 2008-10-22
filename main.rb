@@ -36,13 +36,7 @@ helpers do
 end
 
 get '/' do
-	posts = DB[:posts].reverse_order(:created_at).limit(10)
-	posts = posts.map do |post|
-		post[:body], post[:more?] = split_content(post[:body])
-		d = post[:created_at]
-		post[:url] = "/past/#{d.year}/#{d.month}/#{d.day}/#{post[:slug]}/"
-		post
-	end
+	posts = Post.reverse_order(:created_at).limit(10)
 	erb :index, :locals => { :posts => posts }
 end
 
