@@ -18,12 +18,12 @@
 		<% posts.each do |post| %>
 		<div class="post">
 			<p class="date"><%= post[:created_at].strftime("%b") %><b><%= post[:created_at].strftime("%d") %></b></p>
-			<h2 class="title"><a href="<%= post[:slug] %>"><%= post[:title] %></a></h2>
+			<h2 class="title"><a href="<%= post[:url] %>"><%= post[:title] %></a></h2>
 			<p class="meta"><small><%= post[:tags] %> | <a href="#">No Comments &raquo;</a></small></p>
 			<div class="entry">
 				<%= post[:body] %>
 				<% if post[:more?] %>
-					<a href="<%= post[:slug] %>">Continue reading &raquo;</a>
+					<a href="<%= post[:url] %>">Continue reading &raquo;</a>
 				<% end %>
 			</div>
 		</div>

@@ -36,6 +36,8 @@ get '/' do
 	posts = DB[:posts].reverse_order(:created_at).limit(10)
 	posts = posts.map do |post|
 		post[:body], post[:more?] = split_content(post[:body])
+		d = post[:created_at]
+		post[:url] = "/past/#{d.year}/#{d.month}/#{d.day}/#{post[:slug]}/"
 		post
 	end
 	erb :index, :locals => { :posts => posts }
@@ -46,6 +48,8 @@ get '/feed' do
 	@posts = posts.map do |post|
 		post[:summary], post[:more?] = split_content(post[:body])
 		post[:body] = RDiscount.new(post[:body]).to_html
+		d = post[:created_at]
+		post[:url] = "/past/#{d.year}/#{d.month}/#{d.day}/#{post[:slug]}/"
 		post
 	end
 	content_type 'application/atom+xml', :charset => 'utf-8'
@@ -57,12 +61,14 @@ get '/past/tags/:tag' do
 	posts = DB[:posts].filter(:tags.like("%#{params[:tag]}%")).reverse_order(:created_at).limit(30)
 	posts = posts.map do |post|
 		post[:body], post[:more?] = split_content(post[:body])
+		d = post[:created_at]
+		post[:url] = "/past/#{d.year}/#{d.month}/#{d.day}/#{post[:slug]}/"
 		post
 	end
 	erb :index, :locals => { :posts => posts }
 end
 
-get '/*:slug' do
+get '/past/:year/:month/:day/:slug/' do
 	post = DB[:posts].filter(:slug => params[:slug]).first
 	stop [ 404, "Page not found" ] unless post
 	post[:body] = RDiscount.new(post[:body]).to_html
