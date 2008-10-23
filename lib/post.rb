@@ -18,7 +18,7 @@ class Post < Sequel::Model
 	end
 
 	def body_html
-		RDiscount.new(body).to_html
+		to_html(body)
 	end
 
 	def summary
@@ -27,7 +27,7 @@ class Post < Sequel::Model
 	end
 
 	def summary_html
-		RDiscount.new(summary).to_html
+		to_html(summary)
 	end
 
 	def more?
@@ -43,6 +43,10 @@ class Post < Sequel::Model
 
 	########
 
+	def to_html(markdown)
+		RDiscount.new(markdown).to_html.gsub(/\<code\>\n/, '<code>')
+	end
+
 	def split_content(string)
 		parts = string.gsub(/\r/, '').split("\n\n")
 		show = []
@@ -54,6 +58,6 @@ class Post < Sequel::Model
 				hide << part
 			end
 		end
-		[ RDiscount.new(show.join("\n\n")).to_html, hide.size > 0 ]
+		[ to_html(show.join("\n\n")), hide.size > 0 ]
 	end
 end

@@ -16,6 +16,10 @@ describe Post do
 		@post.body_html.should == "<ul>\n<li>Bullet</li>\n</ul>\n\n"
 	end
 
+	it "gets rid of the newline after the code tag, since code is set to whitespace: pre" do
+		@post.to_html("<code>\none\ntwo</code>").should == "<p><code>one\ntwo</code></p>\n"
+	end
+
 	it "makes the tags into links to the tag search" do
 		@post.tags = "one two"
 		@post.linked_tags.should == '<a href="/past/tags/one">one</a> <a href="/past/tags/two">two</a>'
