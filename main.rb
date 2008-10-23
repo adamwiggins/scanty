@@ -29,3 +29,7 @@ get '/feed' do
 	builder :feed
 end
 
+get '/rss' do
+	redirect '/feed', 301
+end
+
