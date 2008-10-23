@@ -20,6 +20,10 @@ p, ol, ul {
 	line-height: 1.67em;
 }
 
+ul {
+	padding-left: 1.2em;
+}
+
 a {
 	color: #828170;
 }
@@ -230,6 +234,5 @@ hr {
 code {
 	font-family: Monaco, mono;
 	color: #ccc;
-	padding-left: 6px;
 	white-space: pre;
 }
