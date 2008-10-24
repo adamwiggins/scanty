@@ -18,6 +18,11 @@ get '/past/:year/:month/:day/:slug/' do
 	erb :post, :locals => { :post => post }
 end
 
+get '/past' do
+	posts = Post.reverse_order(:created_at)
+	erb :archive, :locals => { :posts => posts }
+end
+
 get '/past/tags/:tag' do
 	posts = Post.filter(:tags.like("%#{params[:tag]}%")).reverse_order(:created_at).limit(30)
 	erb :index, :locals => { :posts => posts }
