@@ -223,12 +223,6 @@ hr {
 	color: #525252;
 }
 
-code {
-	font-family: Monaco, mono;
-	color: #ccc;
-	white-space: pre;
-}
-
 /* Archive */
 .archive .date {
 	font-size: 85%;
@@ -240,4 +234,33 @@ code {
 	text-decoration: none;
 	color: #FFFFDC;
 }
+
+/* Code blocks */
+
+pre {
+	font-family: Monaco, mono;
+	color: #ccc;
+	background: #000;
+	border-left: 6px solid #222;
+	padding: 0.4em;
+	padding-left: 0.8em;
+}
+
+code span.attribute { color: #009900; }
+code span.char { color: #F00; }
+code span.class { color: #A020F0; font-weight: bold; }
+code span.comment { color: #0000FF; }
+code span.constant { color: #008B8B; }
+code span.escape { color: #6A5ACD; }
+code span.expr { color: #2222CC; }
+code span.global { color: #11AA44; }
+code span.ident { color: #CCCCCC; }
+code span.keyword { color: #A52A2A; font-weight: bold; }
+code span.method { color: #008B8B; }
+code span.module { color: #A020F0; font-weight: bold; }
+code span.number { color: #DD00DD; }
+code span.punct { color: #6A5ACD; }
+code span.regex { color: #DD00DD; }
+code span.string { color: #DD00DD; }
+code span.symbol { color: #008B8B; }
 

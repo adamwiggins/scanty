@@ -10,6 +10,7 @@ rescue
 end
 
 require 'rdiscount'
+require 'syntax/convertors/html'
 
 class Post < Sequel::Model
 	def url
@@ -44,7 +45,11 @@ class Post < Sequel::Model
 	########
 
 	def to_html(markdown)
-		RDiscount.new(markdown).to_html.gsub(/\<code\>\n/, '<code>')
+		h = RDiscount.new(markdown).to_html
+		h.gsub(/<code>([^<]+)<\/code>/m) do |block|
+			convertor = Syntax::Convertors::HTML.for_syntax "ruby"
+			"<code>#{convertor.convert($1)}</code>"
+		end
 	end
 
 	def split_content(string)
