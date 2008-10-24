@@ -46,9 +46,10 @@ class Post < Sequel::Model
 
 	def to_html(markdown)
 		h = RDiscount.new(markdown).to_html
-		h.gsub(/<code>([^<]+)<\/code>/m) do |block|
+		h.gsub(/<code>([^<]+)<\/code>/m) do
 			convertor = Syntax::Convertors::HTML.for_syntax "ruby"
-			"<code>#{convertor.convert($1)}</code>"
+			highlighted = convertor.convert($1)
+			"<code>#{highlighted}</code>"
 		end
 	end
 
