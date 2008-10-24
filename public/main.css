@@ -215,24 +215,12 @@ hr {
 	color: #FFFFFF;
 }
 
-#footer a {
-	text-decoration: none;
-	font-size: 10px;
-	color: #FFFFFF;
-}
-
 #legal {
 	clear: both;
 	margin: 0;
 	padding: 10px 0;
 	font-size: 10px;
 	color: #525252;
-}
-
-#legal a {
-	border-bottom: 1px dotted #939393;
-	text-decoration: none;
-	color: #939393;
 }
 
 code {
