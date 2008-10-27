@@ -1,0 +1,11 @@
+<form action="<%= post.url %>" method="post" name="edit">
+<div class="postzoom">
+	<h2 class="title"><input type="text" name="title" value="<%= post.title %>" /></h2>
+	<p class="meta"><input type="text" name="tags" value="<%= post.tags %>" /></p>
+	<p class="meta"><%= post.created_at %></p>
+	<div class="entry">
+		<textarea name="body"><%= post.body %></textarea>
+	</div>
+	<div class="edit"><input type="submit" value="Save" /></div>
+</div>
+</form>
