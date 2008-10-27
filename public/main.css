@@ -177,6 +177,7 @@ hr {
 
 .postzoom {
 	margin-top: 20px;
+	position: relative;
 }
 
 .postzoom .title {
@@ -198,6 +199,13 @@ hr {
 	padding: 0;
 	padding-top: 10px;
 	padding-bottom: 20px;
+}
+
+.postzoom .edit {
+	text-align: right;
+	position: absolute;
+	top: 0;
+	right: 0;
 }
 
 /* Footer */
@@ -258,4 +266,20 @@ code span.punct { color: #6A5ACD; }
 code span.regex { color: #DD00DD; }
 code span.string { color: #DD00DD; }
 code span.symbol { color: #008B8B; }
+
+/* Edit post */
+
+form[name=edit] input[name=title] {
+	font-size: 100%;
+	width: 300pt;
+}
+form[name=edit] input[name=tags] {
+	font-size: 100%;
+	width: 300pt;
+}
+form[name=edit] textarea {
+	font-size: 100%;
+	width: 50em;
+	height: 25em;
+}
 

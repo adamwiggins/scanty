@@ -7,7 +7,15 @@ DB = Sequel.connect('sqlite://blog.db')
 $LOAD_PATH.unshift(File.dirname(__FILE__) + '/lib')
 require 'post'
 
+helpers do
+	def admin?
+		true
+	end
+end
+
 layout 'layout'
+
+### Public
 
 get '/' do
 	posts = Post.reverse_order(:created_at).limit(10)
@@ -46,5 +54,23 @@ end
 
 get '/rss' do
 	redirect '/feed', 301
+end
+
+### Admin
+
+get '/past/:year/:month/:day/:slug/edit' do
+	post = Post.filter(:slug => params[:slug]).first
+	stop [ 404, "Page not found" ] unless post
+	erb :edit, :locals => { :post => post }
+end
+
+post '/past/:year/:month/:day/:slug/' do
+	post = Post.filter(:slug => params[:slug]).first
+	stop [ 404, "Page not found" ] unless post
+	post.title = params[:title]
+	post.tags = params[:tags]
+	post.body = params[:body]
+	post.save
+	redirect post.url
 end
 
