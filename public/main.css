@@ -98,16 +98,11 @@ hr {
 	color: #FFFFFF;
 }
 
-/* Page */
-
-#page {
-	margin: 0px auto;
-	padding: 20px 0 0 0;
-}
-
 /* Content */
 
 #content {
+	margin: 0px auto;
+	padding: 20px 0 0 0;
 	float: left;
 	width: 50em;
 	margin-bottom: 10px;

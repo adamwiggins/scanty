@@ -1,36 +1,10 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<title><%= post[:title] %></title>
-	<link href="/main.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-<div id="header">
-	<div id="logo2">
-		<h1><a href="/">a tornado of razorblades</a></h1>
-		<p>by adam @ heroku</p>
+<div class="postzoom">
+	<h2 class="title"><%= post.title %></h2>
+	<p class="meta"><small><%= post.linked_tags %></small></p>
+	<p class="meta"><%= post.created_at %></p>
+	<div class="entry">
+		<%= post.body_html %>
 	</div>
 </div>
 
-<div id="page">
-	<div id="content">
-		<div class="postzoom">
-			<h2 class="title"><%= post.title %></h2>
-			<p class="meta"><small><%= post.linked_tags %></small></p>
-			<p class="meta"><%= post.created_at %></p>
-			<div class="entry">
-				<%= post.body_html %>
-			</div>
-		</div>
-
-		<div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/adamheroku/embed.js"></script><noscript><a href="http://adamheroku.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
-	</div>
-</div>
-
-<div id="footer">
-	<p id="legal">
-	Content by Adam Wiggins | 
-	Design adapted from <a href="http://www.freecsstemplates.org/preview/replenish">Replenish</a>
-</div>
-</body>
-</html>
+<div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/adamheroku/embed.js"></script><noscript><a href="http://adamheroku.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>

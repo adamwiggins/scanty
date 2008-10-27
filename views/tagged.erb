@@ -1,0 +1,14 @@
+<h1>Posts tagged <%= tag %></h1>
+<% posts.each do |post| %>
+<div class="post">
+	<p class="date"><%= post[:created_at].strftime("%b") %><b><%= post[:created_at].strftime("%d") %></b></p>
+	<h2 class="title"><a href="<%= post.url %>"><%= post[:title] %></a></h2>
+	<p class="meta"><small><%= post.linked_tags %> | <a href="<%= post.url %>#disqus_thread">comments</a></small></p>
+	<div class="entry">
+		<%= post.summary %>
+		<% if post.more? %>
+			<a href="<%= post.url %>">Continue reading &raquo;</a>
+		<% end %>
+	</div>
+</div>
+<% end %>
