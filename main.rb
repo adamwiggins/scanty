@@ -17,7 +17,8 @@ end
 get '/past/:year/:month/:day/:slug/' do
 	post = Post.filter(:slug => params[:slug]).first
 	stop [ 404, "Page not found" ] unless post
-	erb :post, :locals => { :post => post, :title => post.slug }
+	@title = post.title
+	erb :post, :locals => { :post => post }
 end
 
 get '/past/:year/:month/:day/:slug' do
@@ -26,13 +27,15 @@ end
 
 get '/past' do
 	posts = Post.reverse_order(:created_at)
-	erb :archive, :locals => { :posts => posts, :title => "Archive" }
+	@title = "Archive"
+	erb :archive, :locals => { :posts => posts }
 end
 
 get '/past/tags/:tag' do
 	tag = params[:tag]
 	posts = Post.filter(:tags.like("%#{tag}%")).reverse_order(:created_at).limit(30)
-	erb :tagged, :locals => { :posts => posts, :title => "Posts tagged #{tag}", :tag => tag }
+	@title = "Posts tagged #{tag}"
+	erb :tagged, :locals => { :posts => posts, :tag => tag }
 end
 
 get '/feed' do
