@@ -5,15 +5,13 @@ task :environment do
 	require 'post'
 end
 
-task :edit => :environment do
-	post = Post.filter(:slug => ENV['SLUG']).first
-	raise "No such post, specify with SLUG=" unless post
+task :import => :environment do
+	url = ENV['URL'] or raise "No url specified, use URL="
 
-	require 'tempfile'
-	fname = "/tmp/post_#{ENV['SLUG']}"
-	File.open(fname, 'w') { |f| f.write post.body }
-	system "vi #{fname}"
-	post.body = File.read(fname)
-	post.save
-	File.delete(fname)
+	require 'rest_client'
+	posts = YAML.load RestClient.get(url)
+
+	posts.each do |post|
+		DB[:posts] << post
+	end
 end
