@@ -9,7 +9,11 @@ require 'post'
 
 helpers do
 	def admin?
-		true
+		request.cookies['admin'] == 'yup'
+	end
+
+	def auth
+		stop [ 401, 'Not authorized' ] unless admin?
 	end
 end
 
@@ -58,23 +62,36 @@ end
 
 ### Admin
 
+get '/auth' do
+	erb :auth
+end
+
+post '/auth' do
+	set_cookie('admin', 'yup') if params[:password] == 'noodle'
+	redirect '/'
+end
+
 get '/posts/new' do
+	auth
 	erb :edit, :locals => { :post => Post.new, :url => '/posts' }
 end
 
 post '/posts' do
+	auth
 	post = Post.new :title => params[:title], :tags => params[:tags], :body => params[:body], :created_at => Time.now, :slug => Post.make_slug(params[:title])
 	post.save
 	redirect post.url
 end
 
 get '/past/:year/:month/:day/:slug/edit' do
+	auth
 	post = Post.filter(:slug => params[:slug]).first
 	stop [ 404, "Page not found" ] unless post
 	erb :edit, :locals => { :post => post, :url => post.url }
 end
 
 post '/past/:year/:month/:day/:slug/' do
+	auth
 	post = Post.filter(:slug => params[:slug]).first
 	stop [ 404, "Page not found" ] unless post
 	post.title = params[:title]
