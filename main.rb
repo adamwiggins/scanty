@@ -58,10 +58,20 @@ end
 
 ### Admin
 
+get '/posts/new' do
+	erb :edit, :locals => { :post => Post.new, :url => '/posts' }
+end
+
+post '/posts' do
+	post = Post.new :title => params[:title], :tags => params[:tags], :body => params[:body], :created_at => Time.now, :slug => Post.make_slug(params[:title])
+	post.save
+	redirect post.url
+end
+
 get '/past/:year/:month/:day/:slug/edit' do
 	post = Post.filter(:slug => params[:slug]).first
 	stop [ 404, "Page not found" ] unless post
-	erb :edit, :locals => { :post => post }
+	erb :edit, :locals => { :post => post, :url => post.url }
 end
 
 post '/past/:year/:month/:day/:slug/' do

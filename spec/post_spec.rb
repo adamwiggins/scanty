@@ -31,4 +31,10 @@ describe Post do
 		@post.save
 		Post.filter(:title => 'hello').first.body.should == 'world'
 	end
+
+	it "generates a slug from the title (but saved to db on first pass so that url never changes)" do
+		Post.make_slug("RestClient 0.8").should == 'restclient_08'
+		Post.make_slug("Rushmate, rush + TextMate").should == 'rushmate_rush_textmate'
+		Post.make_slug("Object-Oriented File Manipulation").should == 'objectoriented_file_manipulation'
+	end
 end

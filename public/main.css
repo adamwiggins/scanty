@@ -173,6 +173,12 @@ hr {
 	font-size: 120%;
 }
 
+#new_post {
+	position: absolute;
+	top: 1em;
+	right: 1em;
+}
+
 /* Post */
 
 .postzoom {

@@ -31,6 +31,10 @@
 	<div id="older_posts">
 		<a href="/past">Archive</a>
 	</div>
+
+	<% if admin? %>
+		<div id="new_post"><a href="/posts/new"">New post</a></div>
+	<% end %>
 </div>
 
 <script type="text/javascript">
