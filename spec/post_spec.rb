@@ -24,4 +24,11 @@ describe Post do
 		@post.tags = "one two"
 		@post.linked_tags.should == '<a href="/past/tags/one">one</a> <a href="/past/tags/two">two</a>'
 	end
+
+	it "can save itself (primary key is set up)" do
+		@post.title = 'hello'
+		@post.body = 'world'
+		@post.save
+		Post.filter(:title => 'hello').first.body.should == 'world'
+	end
 end

@@ -1,18 +1,17 @@
-begin
-	DB.create_table :posts do
-		column :title, :text
-		column :body, :text
-		column :slug, :text
-		column :tags, :text
-		column :created_at, :timestamp
-	end
-rescue
-end
-
 require 'rdiscount'
 require 'syntax/convertors/html'
 
 class Post < Sequel::Model
+	set_schema do
+		integer :id
+		text :title
+		text :body
+		text :slug
+		text :tags
+		timestamp :created_at
+		primary_key [ :id ]
+	end
+
 	def url
 		d = created_at
 		"/past/#{d.year}/#{d.month}/#{d.day}/#{slug}/"
@@ -67,3 +66,5 @@ class Post < Sequel::Model
 		[ to_html(show.join("\n\n")), hide.size > 0 ]
 	end
 end
+
+Post.create_table unless Post.table_exists?
