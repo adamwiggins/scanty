@@ -18,6 +18,10 @@ get '/past/:year/:month/:day/:slug/' do
 	erb :post, :locals => { :post => post }
 end
 
+get '/past/:year/:month/:day/:slug' do
+	redirect "/past/#{params[:year]}/#{params[:month]}/#{params[:day]}/#{params[:slug]}/", 301
+end
+
 get '/past' do
 	posts = Post.reverse_order(:created_at)
 	erb :archive, :locals => { :posts => posts }
