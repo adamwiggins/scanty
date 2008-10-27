@@ -2,7 +2,9 @@ require 'rubygems'
 require 'sinatra'
 require 'sequel'
 
-DB = Sequel.connect('sqlite://blog.db')
+configure do
+	DB = Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://blog.db')
+end
 
 $LOAD_PATH.unshift(File.dirname(__FILE__) + '/lib')
 require 'post'
