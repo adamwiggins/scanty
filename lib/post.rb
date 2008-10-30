@@ -3,7 +3,7 @@ require 'syntax/convertors/html'
 
 class Post < Sequel::Model
 	set_schema do
-		integer :id
+		serial :id
 		text :title
 		text :body
 		text :slug
@@ -15,6 +15,10 @@ class Post < Sequel::Model
 	def url
 		d = created_at
 		"/past/#{d.year}/#{d.month}/#{d.day}/#{slug}/"
+	end
+
+	def full_url
+		Blog.url_base.gsub(/\/$/, '') + url
 	end
 
 	def body_html

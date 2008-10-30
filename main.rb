@@ -4,6 +4,13 @@ require 'sequel'
 
 configure do
 	DB = Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://blog.db')
+
+	require 'ostruct'
+	Blog = OpenStruct.new(
+		:title => 'a tornado of razorblades',
+		:author => 'Adam Wiggins',
+		:url_base => 'http://adam.blog.heroku.com/'
+	)
 end
 
 $LOAD_PATH.unshift(File.dirname(__FILE__) + '/lib')

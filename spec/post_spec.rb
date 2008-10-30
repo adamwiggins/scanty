@@ -11,6 +11,13 @@ describe Post do
 		@post.url.should == '/past/2008/10/22/my_post/'
 	end
 
+	it "has a full url including the Config.url_base" do
+		@post.created_at = '2008-10-22'
+		@post.slug = "my_post"
+		Config.stub!(:url_base).and_return('http://blog.example.com/')
+		@post.url.should == 'http://blog.example.com/past/2008/10/22/my_post/'
+	end
+
 	it "produces html from the markdown body" do
 		@post.body = "* Bullet"
 		@post.body_html.should == "<ul>\n<li>Bullet</li>\n</ul>\n\n"
