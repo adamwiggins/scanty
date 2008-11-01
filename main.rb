@@ -9,7 +9,10 @@ configure do
 	Blog = OpenStruct.new(
 		:title => 'a tornado of razorblades',
 		:author => 'Adam Wiggins',
-		:url_base => 'http://adam.blog.heroku.com/'
+		:url_base => 'http://adam.blog.heroku.com/',
+		:admin_password => 'noodle',
+		:admin_cookie_key => 'admin',
+		:admin_cookie_value => 'yup'
 	)
 end
 
@@ -18,7 +21,7 @@ require 'post'
 
 helpers do
 	def admin?
-		request.cookies['admin'] == 'yup'
+		request.cookies[Blog.admin_cookie_key] == Blog.admin_cookie_value
 	end
 
 	def auth
@@ -76,7 +79,7 @@ get '/auth' do
 end
 
 post '/auth' do
-	set_cookie('admin', 'yup') if params[:password] == 'noodle'
+	set_cookie(Blog.admin_cookie_key, Blog.admin_cookie_value) if params[:password] == Blog.admin_password
 	redirect '/'
 end
 
