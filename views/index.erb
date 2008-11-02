@@ -1,14 +1,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<title>a tornado of razorblades</title>
+	<title><%= Blog.title %></title>
 	<link href="/main.css" rel="stylesheet" type="text/css" />
 	<link href="/feed" rel="alternate" title="Primary Feed" type="application/atom+xml" />
 </head>
 <body>
 <div id="header">
 	<div id="logo">
-		<h1><a href="/">a tornado of razorblades</a></h1>
+		<h1><a href="/"><%= Blog.title %></a></h1>
 		<p>by adam @ heroku</p>
 	</div>
 </div>
@@ -54,7 +54,7 @@
 
 <div id="footer">
 	<p id="legal">
-	Content by Adam Wiggins | 
+	Content by <%= Blog.author %> | 
 	Design adapted from <a href="http://www.freecsstemplates.org/preview/replenish">Replenish</a>
 </div>
 </body>
