@@ -1,0 +1,71 @@
+= Scanty, a really small blog
+
+== Overview
+
+Scanty is blogging software.  To be exact, software for my blog:
+http://adam.blog.heroku.com
+
+It is not a blogging engine, but it's small and easy to modify, so it could be
+the starting point for your blog, too.
+
+== Features
+
+* Posts (shock!)
+* Tags
+* Markdown (via RDiscount)
+* Ruby code syntax highlighting (via Syntax)
+* Atom feed
+* Comments via Disqus
+* Web framework = Sinatra
+* ORM = Sequel
+
+== Dependencies
+
+  $ gem install sinatra sequel rdiscount syntax
+
+== Setup
+
+Edit main.rb and change the Blog config struct at the top to your liking.  For
+security purposes, please make sure to change the admin password and the admin
+cookie key and value.  These last two can be set to anything, doesn't matter
+what, just something other than the default.
+
+Then run the server:
+
+  $ ruby main.rb
+
+And go to: http://localhost:4567/auth
+
+Log in with the password you selected, then click New Post.  The rest should be
+self-explanatory.
+
+In production, you'll probably want to run "rake start" to start (and restart)
+the server.  Change the value of "port" at the top of the Rakefile to run on a
+different port.
+
+== Database
+
+The default is a SQLite file named blog.db.  To use something else, set
+DATABASE_URL in your environment when running the app, i.e.:
+
+  $ DATABASE_URL='mysql://localhost/myblog' ruby main.rb
+
+Or, modify the Sequel.connect statement at the top of main.rb.
+
+The database will be created automatically when the server is executed.
+
+== Customize
+
+There are no themes or settings beyond the basic ones in the Blog struct.  Just
+edit the CSS or the code as you see fit.
+
+== Meta
+
+Written by Adam Wiggins
+
+Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
+
+http://github.com/adamwiggins/keen
+
+http://adam.blog.heroku.com/
+
