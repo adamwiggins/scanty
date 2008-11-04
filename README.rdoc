@@ -2,7 +2,7 @@
 
 == Overview
 
-Scanty is blogging software.  To be exact, software for my blog:
+Scanty is blogging software.  Software for my blog, to be exact:
 http://adam.blog.heroku.com
 
 It is not a blogging engine, but it's small and easy to modify, so it could be
@@ -26,15 +26,15 @@ the starting point for your blog, too.
 == Setup
 
 Edit main.rb and change the Blog config struct at the top to your liking.  For
-security purposes, please make sure to change the admin password and the admin
-cookie key and value.  These last two can be set to anything, doesn't matter
-what, just something other than the default.
+security purposes, change the admin password and the admin cookie key and
+value.  These last two can be set to any random value you like, just choose
+something other than the default.
 
 Then run the server:
 
   $ ruby main.rb
 
-And go to: http://localhost:4567/auth
+And visit: http://localhost:4567/
 
 Log in with the password you selected, then click New Post.  The rest should be
 self-explanatory.
