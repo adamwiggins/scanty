@@ -54,6 +54,12 @@ Or, modify the Sequel.connect statement at the top of main.rb.
 
 The database will be created automatically when the server is executed.
 
+== Comments
+
+There are no comments by default.  If you wish to activate comments, create an
+account and a website on Disqus (disqus.com) and enter the website shortname as
+the :disqus_shortname value in the Blog config struct.
+
 == Customize
 
 There are no themes or settings beyond the basic ones in the Blog struct.  Just

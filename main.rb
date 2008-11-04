@@ -12,7 +12,8 @@ configure do
 		:url_base => 'http://localhost:4567/',
 		:admin_password => 'pick_your_password',
 		:admin_cookie_key => 'scanty_admin',
-		:admin_cookie_value => '51d6d976913ace58'
+		:admin_cookie_value => '51d6d976913ace58',
+		:disqus_shortname => nil
 	)
 end
 
