@@ -3,7 +3,7 @@ require 'sinatra'
 require 'sequel'
 
 configure do
-	DB = Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://blog.db')
+	Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://blog.db')
 
 	require 'ostruct'
 	Blog = OpenStruct.new(

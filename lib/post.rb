@@ -2,6 +2,7 @@ require 'rdiscount'
 require 'syntax/convertors/html'
 
 class Post < Sequel::Model
+	set_primary_key [ :id ]
 	set_schema do
 		serial :id
 		text :title
@@ -9,7 +10,6 @@ class Post < Sequel::Model
 		text :slug
 		text :tags
 		timestamp :created_at
-		primary_key [ :id ]
 	end
 
 	def url
