@@ -7,12 +7,12 @@ configure do
 
 	require 'ostruct'
 	Blog = OpenStruct.new(
-		:title => 'a tornado of razorblades',
-		:author => 'Adam Wiggins',
-		:url_base => 'http://adam.blog.heroku.com/',
-		:admin_password => 'noodle',
-		:admin_cookie_key => 'admin',
-		:admin_cookie_value => 'yup'
+		:title => 'a scanty blog',
+		:author => 'John Doe',
+		:url_base => 'http://localhost:4567/',
+		:admin_password => 'pick_your_password',
+		:admin_cookie_key => 'scanty_admin',
+		:admin_cookie_value => '51d6d976913ace58'
 	)
 end
 
