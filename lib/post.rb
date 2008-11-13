@@ -1,5 +1,7 @@
 require File.dirname(__FILE__) + '/../vendor/maruku/maruku'
-require File.dirname(__FILE__) + '/../vendor/syntax/syntax/convertors/html'
+
+$LOAD_PATH.unshift File.dirname(__FILE__) + '/../vendor/syntax'
+require 'syntax/convertors/html'
 
 class Post < Sequel::Model
 	set_primary_key [ :id ]
