@@ -1,5 +1,7 @@
 require 'rubygems'
 require 'sinatra'
+
+$LOAD_PATH.unshift File.dirname(__FILE__) + '/vendor/sequel'
 require 'sequel'
 
 configure do

@@ -1,0 +1,1 @@
+require 'sequel_model'
