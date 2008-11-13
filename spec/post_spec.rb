@@ -20,11 +20,11 @@ describe Post do
 
 	it "produces html from the markdown body" do
 		@post.body = "* Bullet"
-		@post.body_html.should == "<ul>\n<li>Bullet</li>\n</ul>\n\n"
+		@post.body_html.should == "<ul>\n<li>Bullet</li>\n</ul>"
 	end
 
 	it "syntax highlights code blocks" do
-		@post.to_html("<code>\none\ntwo</code>").should == "<p><code><pre>\n<span class=\"ident\">one</span>\n<span class=\"ident\">two</span></pre></code></p>\n"
+		@post.to_html("<code>\none\ntwo</code>").should == "<code><pre>\n<span class=\"ident\">one</span>\n<span class=\"ident\">two</span></pre></code>"
 	end
 
 	it "makes the tags into links to the tag search" do
