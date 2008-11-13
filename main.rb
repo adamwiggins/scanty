@@ -19,6 +19,13 @@ configure do
 	)
 end
 
+error do
+	e = request.env['sinatra.error']
+	puts e.to_s
+	puts e.backtrace.join("\n")
+	"Application error"
+end
+
 $LOAD_PATH.unshift(File.dirname(__FILE__) + '/lib')
 require 'post'
 
