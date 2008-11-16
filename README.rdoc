@@ -71,6 +71,8 @@ edit the CSS or the code as you see fit.
 
 Written by Adam Wiggins
 
+Patches contributed by: Christopher Swenson
+
 Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
 
 http://github.com/adamwiggins/keen
