@@ -12,7 +12,7 @@ the starting point for your blog, too.
 
 * Posts (shock!)
 * Tags
-* Markdown (via RDiscount)
+* Markdown (via Maruku)
 * Ruby code syntax highlighting (via Syntax)
 * Atom feed
 * Comments via Disqus
@@ -21,7 +21,9 @@ the starting point for your blog, too.
 
 == Dependencies
 
-  $ gem install sinatra sequel rdiscount syntax
+  $ gem install sinatra
+
+Sequel, Maruku, and Syntax are all vendored.
 
 == Setup
 
