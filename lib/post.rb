@@ -4,9 +4,8 @@ $LOAD_PATH.unshift File.dirname(__FILE__) + '/../vendor/syntax'
 require 'syntax/convertors/html'
 
 class Post < Sequel::Model
-	set_primary_key [ :id ]
 	set_schema do
-		serial :id
+		primary_key :id
 		text :title
 		text :body
 		text :slug
