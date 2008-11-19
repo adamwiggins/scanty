@@ -62,6 +62,12 @@ There are no comments by default.  If you wish to activate comments, create an
 account and a website on Disqus (disqus.com) and enter the website shortname as
 the :disqus_shortname value in the Blog config struct.
 
+== Import data
+
+Christopher Swenson has a Wordpress importer: http://github.com/swenson/scanty_wordpress_import
+
+Other kinds of data can be imported easily, take a look at the rake task :import for an example of loading from a YAML file with field names that match the database schema.
+
 == Customize
 
 There are no themes or settings beyond the basic ones in the Blog struct.  Just
