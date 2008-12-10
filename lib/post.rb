@@ -4,7 +4,7 @@ $LOAD_PATH.unshift File.dirname(__FILE__) + '/../vendor/syntax'
 require 'syntax/convertors/html'
 
 class Post < Sequel::Model
-	unless Post.table_exists?
+	unless table_exists?
 		set_schema do
 			primary_key :id
 			text :title
