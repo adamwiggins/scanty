@@ -4,13 +4,16 @@ $LOAD_PATH.unshift File.dirname(__FILE__) + '/../vendor/syntax'
 require 'syntax/convertors/html'
 
 class Post < Sequel::Model
-	set_schema do
-		primary_key :id
-		text :title
-		text :body
-		text :slug
-		text :tags
-		timestamp :created_at
+	unless Post.table_exists?
+		set_schema do
+			primary_key :id
+			text :title
+			text :body
+			text :slug
+			text :tags
+			timestamp :created_at
+		end
+		create_table
 	end
 
 	def url
@@ -75,5 +78,3 @@ class Post < Sequel::Model
 		[ to_html(show.join("\n\n")), hide.size > 0 ]
 	end
 end
-
-Post.create_table unless Post.table_exists?
