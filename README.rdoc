@@ -77,7 +77,7 @@ edit the CSS or the code as you see fit.
 
 Written by Adam Wiggins
 
-Patches contributed by: Christopher Swenson
+Patches contributed by: Christopher Swenson and S. Brent Faulkner
 
 Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
 
