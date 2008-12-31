@@ -5,7 +5,7 @@
 	<h2 class="title"><a href="<%= post.url %>"><%= post[:title] %></a></h2>
 	<p class="meta"><small><%= post.linked_tags %> | <a href="<%= post.url %>#disqus_thread">comments</a></small></p>
 	<div class="entry">
-		<%= post.summary %>
+		<%= post.summary_html %>
 		<% if post.more? %>
 			<a href="<%= post.url %>">Continue reading &raquo;</a>
 		<% end %>
