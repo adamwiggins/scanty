@@ -30,17 +30,17 @@ class Post < Sequel::Model
 	end
 
 	def summary
-		summary, more = split_content(body)
-		summary
+		@summary ||= body.match(/(.{200}.*?\n)/m)
+		@summary || body
 	end
 
 	def summary_html
-		to_html(summary)
+		to_html(summary.to_s)
 	end
 
 	def more?
-		summary, more = split_content(body)
-		more
+		@more ||= body.match(/.{200}.*?\n(.*)/m)
+		@more
 	end
 
 	def linked_tags
