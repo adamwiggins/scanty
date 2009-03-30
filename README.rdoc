@@ -36,7 +36,7 @@ Then run the server:
 
   $ ruby main.rb
 
-And visit: http://localhost:4567/
+And visit: http://localhost:4567
 
 Log in with the password you selected, then click New Post.  The rest should be
 self-explanatory.
@@ -81,7 +81,7 @@ Patches contributed by: Christopher Swenson, S. Brent Faulkner, and Stephen Eley
 
 Released under the MIT License: http://www.opensource.org/licenses/mit-license.php
 
-http://github.com/adamwiggins/keen
+http://github.com/adamwiggins/scanty
 
-http://adam.blog.heroku.com/
+http://adam.blog.heroku.com
 
