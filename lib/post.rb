@@ -56,12 +56,27 @@ class Post < Sequel::Model
 	########
 
 	def to_html(markdown)
-		h = Maruku.new(markdown).to_html
-		h.gsub(/<code>([^<]+)<\/code>/m) do
-			convertor = Syntax::Convertors::HTML.for_syntax "ruby"
-			highlighted = convertor.convert($1)
-			"<code>#{highlighted}</code>"
+		out = []
+		noncode = []
+		code_block = nil
+		markdown.split("\n").each do |line|
+			if !code_block and line.strip.downcase == '<code>'
+				out << Maruku.new(noncode.join("\n")).to_html
+				noncode = []
+				code_block = []
+			elsif code_block and line.strip.downcase == '</code>'
+				convertor = Syntax::Convertors::HTML.for_syntax "ruby"
+				highlighted = convertor.convert(code_block.join("\n"))
+				out << "<code>#{highlighted}</code>"
+				code_block = nil
+			elsif code_block
+				code_block << line
+			else
+				noncode << line
+			end
 		end
+		out << Maruku.new(noncode.join("\n")).to_html
+		out
 	end
 
 	def split_content(string)
