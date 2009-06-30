@@ -73,7 +73,7 @@ get '/past/tags/:tag' do
 end
 
 get '/feed' do
-	@posts = Post.reverse_order(:created_at).limit(10)
+	@posts = Post.reverse_order(:created_at).limit(20)
 	content_type 'application/atom+xml', :charset => 'utf-8'
 	builder :feed
 end
