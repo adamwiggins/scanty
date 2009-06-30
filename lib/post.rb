@@ -76,7 +76,7 @@ class Post < Sequel::Model
 			end
 		end
 		out << Maruku.new(noncode.join("\n")).to_html
-		out
+		out.join("\n")
 	end
 
 	def split_content(string)
